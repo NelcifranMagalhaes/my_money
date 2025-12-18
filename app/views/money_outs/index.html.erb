@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Money outs" %>
+
+<h1>Money outs</h1>
+
+<div id="money_outs">
+  <% @money_outs.each do |money_out| %>
+    <%= render money_out %>
+    <p>
+      <%= link_to "Show this money out", money_out %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New money out", new_money_out_path %>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing money out" %>
+
+<h1>Editing money out</h1>
+
+<%= render "form", money_out: @money_out %>
+
+<br>
+
+<div>
+  <%= link_to "Show this money out", @money_out %> |
+  <%= link_to "Back to money outs", money_outs_path %>
+</div>

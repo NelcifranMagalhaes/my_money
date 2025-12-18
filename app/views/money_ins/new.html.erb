@@ -1,0 +1,17 @@
+<% content_for :title, "New money in" %>
+
+  <main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Nova Entrada</h1>
+        <p class="lead text-body-secondary">Dinheiro que entra.</p>
+        <p>
+
+        </p>
+      </div>
+      <%= render "form", money_in: @money_in %>
+    </div>
+     <%= link_to "Back to money ins", money_ins_path %>
+  </section>
+  </main>
