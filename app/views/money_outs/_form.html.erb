@@ -11,27 +11,36 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :label, style: "display: block" %>
-    <%= form.text_field :label %>
+  <div class="mb-3">
+    <%= form.label :label, class: "form-label", for: "moneyOutLabel" %>
+    <%= form.text_field :label, class: "form-control", id: "moneyOutLabel", placeholder: "nome da despesa" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label", for: "moneyOutDescription" %>
+    <%= form.text_field :description, class: "form-control", id: "moneyOutDescription", placeholder: "descrição da despesa" %>
   </div>
 
-  <div>
-    <%= form.label :money_date, style: "display: block" %>
-    <%= form.date_field :money_date %>
+  <div class="mb-3">
+    <%= form.label :amount, class: "form-label", for: "moneyOutAmount" %>
+    <%= form.number_field :amount, class: "form-control", id: "moneyOutAmount", step: "0.01", placeholder: "valor da despesa" %>
   </div>
 
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.text_field :category_id %>
+  <div class="mb-3">
+    <%= form.label :money_date, class: "form-label", for: "moneyOutMoneyDate" %>
+    <%= form.date_field :money_date, class: "form-control", id: "moneyOutMoneyDate" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.label :category_id, class: "form-label", for: "moneyOutCategoryId" %>
+    <%= form.select :category_id, Category.all.collect { |c| [c.name, c.id] }, { include_blank: "Selecione uma categoria" }, class: "form-control", id: "moneyOutCategoryId" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Criar Despesa", class: "btn btn-primary" %>
+  </div>
+
+  <div class="mb-3">
+    <%= link_to "Voltar", categories_path, class: "btn btn-secondary" %>
   </div>
 <% end %>

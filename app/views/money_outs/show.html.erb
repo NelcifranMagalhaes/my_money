@@ -2,9 +2,8 @@
 
 <%= render @money_out %>
 
-<div>
-  <%= link_to "Edit this money out", edit_money_out_path(@money_out) %> |
-  <%= link_to "Back to money outs", money_outs_path %>
-
-  <%= button_to "Destroy this money out", @money_out, method: :delete %>
+<div class="d-grid gap-3 d-md-block d-md-flex mt-4">
+  <%= link_to "Editar esta Despesa", edit_money_out_path(@money_out), class: "btn btn-primary" %>
+  <%= link_to "Voltar para despesas", money_outs_path, class: "btn btn-secondary" %>
+  <%= button_to "Excluir esta Despesa", @money_out, method: :delete, class: "btn btn-danger" %>
 </div>

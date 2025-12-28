@@ -65,6 +65,6 @@ class MoneyOutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def money_out_params
-      params.expect(money_out: [ :label, :description, :money_date, :category_id ])
+      params.expect(money_out: [ :label, :description, :amount, :money_date, :category_id ])
     end
 end

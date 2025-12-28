@@ -1,22 +1,18 @@
-<div id="<%= dom_id money_in %>">
-  <div>
-    <strong>Label:</strong>
+
+<div class="card text-center" id="<%= dom_id money_in %>">
+  <div class="card-header">
     <%= money_in.label %>
   </div>
-
-  <div>
-    <strong>Description:</strong>
-    <%= money_in.description %>
+  <div class="card-body">
+    <p class="card-text"><%= money_in.description %></p>
   </div>
-
-  <div>
-    <strong>Money date:</strong>
-    <%= money_in.money_date %>
+  <div class="card-body">
+    <p class="card-text"><b>Categoria:</b> <%= money_in.category.name %></p>
   </div>
-
-  <div>
-    <strong>Category:</strong>
-    <%= money_in.category_id %>
+  <div class="card-body">
+    <p class="card-text"><b>Valor:</b> R$<%= money_in.amount %></p>
   </div>
-
+  <div class="card-footer text-body-secondary">
+    <b><%= money_in.money_date %></b>
+  </div>
 </div>

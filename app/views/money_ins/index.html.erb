@@ -1,16 +1,43 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Money ins" %>
+<% content_for :title, "Receitas" %>
 
-<h1>Money ins</h1>
+<h1>Receitas</h1>
 
 <div id="money_ins">
-  <% @money_ins.each do |money_in| %>
-    <%= render money_in %>
-    <p>
-      <%= link_to "Show this money in", money_in %>
-    </p>
-  <% end %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th>Categoria</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @money_ins.each do |money_in| %>
+        <tr>
+          <td><%= money_in.label %></td>
+          <td><%= money_in.description %></td>
+          <td><%= number_to_currency(money_in.amount) %></td>
+          <td><%= money_in.money_date %></td>
+          <td><%= money_in.category.name if money_in.category %></td>
+          <td>
+            <%= link_to "Editar", edit_money_in_path(money_in), class: "btn btn-warning" %>
+            <%= link_to "Excluir", money_in, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger" %>
+            <%= link_to(money_in , class: "btn btn-default") do %>
+              <i class="fa-solid fa-eye"></i> Ver
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New money in", new_money_in_path %>
+<%= link_to "Nova receita", new_money_in_path, class: "btn btn-primary" %>
+
+

@@ -22,6 +22,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_18_214334) do
   end
 
   create_table "money_ins", force: :cascade do |t|
+    t.decimal "amount"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.string "description"
@@ -32,6 +33,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_18_214334) do
   end
 
   create_table "money_outs", force: :cascade do |t|
+    t.decimal "amount"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.string "description"
