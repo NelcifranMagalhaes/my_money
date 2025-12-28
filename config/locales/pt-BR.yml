@@ -1,0 +1,62 @@
+pt-BR:
+  number:
+    currency:
+      format:
+        format: "%u%n"
+        unit: "R$"
+        separator: ","
+        delimiter: "."
+        precision: 2
+
+  activerecord:
+    models:
+      category: "Categoria"
+      money_in: "Receita"
+      money_out: "Despesa"
+
+    attributes:
+      category:
+        name: "Nome"
+        description: "Descrição"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+
+      money_in:
+        label: "Nome da Receita"
+        description: "Descrição"
+        amount: "Valor"
+        money_date: "Data"
+        category_id: "Categoria"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+
+      money_out:
+        label: "Nome da Despesa"
+        description: "Descrição"
+        amount: "Valor"
+        money_date: "Data"
+        category: "Categoria"
+        category_id: "Categoria"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+
+    errors:
+      messages:
+        blank: "não pode ficar em branco"
+        required: "é obrigatório"
+        not_a_number: "não é um número"
+      models:
+        money_out:
+          attributes:
+            category:
+              required: "é obrigatória"
+            label:
+              blank: "não pode ficar em branco"
+            money_date:
+              blank: "não pode ficar em branco"
+
+  errors:
+    messages:
+      blank: "não pode ficar em branco"
+      required: "é obrigatório"
+      not_a_number: "não é um número"
