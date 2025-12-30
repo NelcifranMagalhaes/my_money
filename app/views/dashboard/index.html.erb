@@ -1,7 +1,7 @@
 <h1>Dashboard</h1>
 
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="container mt-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
         <div class="card-header">Despesas do Mês</div>
@@ -19,5 +19,67 @@
         </div>
       </div>
     </div>
+
+    <div class="col">
+      <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Dinheiro que Tenho</div>
+        <div class="card-body">
+          <h5 class="card-title"><%= number_to_currency(@how_many_money_have) %></h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">Despesas por Categoria</div>
+            <%= pie_chart @money_out_by_category %>
+        </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">Despesas por Mês</div>
+            <%= line_chart @money_out_by_month %>
+        </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">Top 5 Despesas do Mês</div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Categoria</th>
+                  <th>Valor</th>
+                  <th>Data</th>
+                  <th>Nome</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @most_expensive_money_outs.each do |expense| %>
+                  <tr>
+                    <td><%= expense.category.name %></td>
+                    <td><%= number_to_currency(expense.amount) %></td>
+                    <td><%= expense.money_date.strftime("%d/%m/%Y") %></td>
+                    <td><%= expense.label %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+
+  
+
+  
