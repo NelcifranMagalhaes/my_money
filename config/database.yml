@@ -86,7 +86,7 @@ test:
 #
 production:
   adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV["DATABASE_URL"] %>
   # encoding: unicode
   # database: <%= ENV['PGDATABASE'] %>
   # username: <%= ENV['PGUSER'] %>
