@@ -94,3 +94,19 @@ production:
   # host: <%= ENV['PGHOST'] %>
   # port: <%= ENV['PGPORT'] || 5432 %>
   # pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+
+cable:
+  primary:
+    adapter: postgresql
+    url: <%= ENV["DATABASE_URL"] %>
+
+queue:
+  primary:
+    adapter: postgresql
+    url: <%= ENV["DATABASE_URL"] %>
+
+cache:
+  primary:
+    adapter: postgresql
+    url: <%= ENV["DATABASE_URL"] %>
+
