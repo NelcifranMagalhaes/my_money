@@ -27,28 +27,33 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
-      <div class="container-fluid">
-        <%= link_to "Meu Dinheiro", dashboard_path, class: "navbar-brand active", aria: { current: "page" } %>
-        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <% unless current_page?(new_session_path) || current_page?(new_password_path) %>
+      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+        <div class="container-fluid">
+          <%= link_to "Meu Dinheiro", dashboard_path, class: "navbar-brand active", aria: { current: "page" } %>
+          <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <%= link_to "Despesas", money_outs_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Receitas", money_ins_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Categorias", categories_path, class: "nav-link" %>
-            </li>
-          </ul>
+          <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <%= link_to "Despesas", money_outs_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Receitas", money_ins_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Categorias", categories_path, class: "nav-link" %>
+              </li>
+            </ul>
+            <div class="navbar-text">
+              <%= button_to "Sair", session_path, method: :delete, class: "btn btn-link nav-link" %>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    <% end %>
 
     <main>
       <div class="container align-items-center mt-5 pt-5">

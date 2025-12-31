@@ -1,0 +1,15 @@
+<img class="mb-4 d-block mx-auto" src="<%= asset_path('despesas.png') %>" alt="Logo" width="72" height="72">
+<h1 class="h3 mb-3 fw-normal text-center">Atualize sua senha</h1>
+
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+
+<main class="form-signin w-100 m-auto">
+  <%= form_with url: password_path(params[:token]), method: :put do |form| %>
+    <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Coloque a nova senha", maxlength: 72, class: "form-control", id: "floatingPassword" %><br>
+    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repita a nova senha", maxlength: 72, class: "form-control", id: "floatingPasswordConfirmation" %><br>
+    <%= form.submit "Salvar", class: "btn btn-primary w-100 py-2" %>
+  <% end %>
+  <p class="mt-3 text-center">
+    <%= link_to "Voltar para login", new_session_path %>
+  </p>
+</main>

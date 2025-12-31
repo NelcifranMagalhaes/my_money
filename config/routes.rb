@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   resources :money_ins
   resources :money_outs
   resources :categories
