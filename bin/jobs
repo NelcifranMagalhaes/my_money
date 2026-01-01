@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
 
-require_relative "../config/environment"
-require "solid_queue/cli"
-
-SolidQueue::Cli.start(ARGV)
+# This script is a placeholder for job queue management.
+# Configure your job queue adapter in config/environments/production.rb
