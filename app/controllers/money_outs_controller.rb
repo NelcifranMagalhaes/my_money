@@ -3,7 +3,7 @@ class MoneyOutsController < ApplicationController
 
   # GET /money_outs or /money_outs.json
   def index
-    @money_outs = MoneyOut.all
+    @pagy, @money_outs = pagy(MoneyOut.all)
   end
 
   # GET /money_outs/1 or /money_outs/1.json

@@ -1,8 +1,6 @@
 <%= form_with(model: money_out) do |form| %>
   <% if money_out.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(money_out.errors.count, "error") %> prohibited this money_out from being saved:</h2>
-
       <ul>
         <% money_out.errors.each do |error| %>
           <li><%= error.full_message %></li>

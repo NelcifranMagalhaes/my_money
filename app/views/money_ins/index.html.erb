@@ -23,7 +23,7 @@
           <td><%= money_in.label %></td>
           <td><%= money_in.description %></td>
           <td><%= number_to_currency(money_in.amount) %></td>
-          <td><%= money_in.money_date %></td>
+          <td><%= money_in.money_date.strftime("%d/%m/%Y") %></td>
           <td><%= money_in.category.name if money_in.category %></td>
           <td>
             <%= link_to "Editar", edit_money_in_path(money_in), class: "btn btn-warning" %>
@@ -37,7 +37,7 @@
     </tbody>
   </table>
 </div>
-
+<%== @pagy.series_nav(:bootstrap) %>
 <%= link_to "Nova receita", new_money_in_path, class: "btn btn-primary" %>
 
 

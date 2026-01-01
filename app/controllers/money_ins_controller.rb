@@ -3,7 +3,7 @@ class MoneyInsController < ApplicationController
 
   # GET /money_ins or /money_ins.json
   def index
-    @money_ins = MoneyIn.all
+    @pagy, @money_ins = pagy(MoneyIn.all)
   end
 
   # GET /money_ins/1 or /money_ins/1.json
