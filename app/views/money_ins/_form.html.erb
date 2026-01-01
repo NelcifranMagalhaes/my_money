@@ -1,8 +1,6 @@
 <%= form_with(model: money_in) do |form| %>
   <% if money_in.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(money_in.errors.count, "erro") %> impediram que esta receita fosse salva:</h2>
-
       <ul>
         <% money_in.errors.each do |error| %>
           <li><%= error.full_message %></li>

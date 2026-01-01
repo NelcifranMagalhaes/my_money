@@ -13,6 +13,6 @@
     <p class="card-text"><b>Valor:</b> R$<%= money_out.amount %></p>
   </div>
   <div class="card-footer text-body-secondary">
-    <b><%= money_out.money_date %></b>
+    <b><%= money_out.money_date.strftime("%d/%m/%Y") %></b>
   </div>
 </div>
