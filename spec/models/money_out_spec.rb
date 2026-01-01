@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe MoneyOut, type: :model do
-    subject { MoneyOut.new(amount:150.0, description:"Grocery shopping",
-   label: "Food", money_date: Date.today, category: Category.new(name:"Food")) }
+    subject { MoneyOut.new(amount: 150.0, description: "Grocery shopping",
+   label: "Food", money_date: Date.today, category: Category.new(name: "Food")) }
   describe 'Validations' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid
