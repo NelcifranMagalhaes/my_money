@@ -3,7 +3,9 @@ class MoneyOutsController < ApplicationController
 
   # GET /money_outs or /money_outs.json
   def index
-    @pagy, @money_outs = pagy(MoneyOut.all)
+    @q = MoneyOut.includes(:category).ransack(params[:q])
+    @pagy, @money_outs = pagy(@q.result.order(created_at: :desc))
+    @categories = Category.all
   end
 
   # GET /money_outs/1 or /money_outs/1.json

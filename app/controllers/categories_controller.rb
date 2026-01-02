@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @pagy, @categories = pagy(Category.all)
+    @pagy, @categories = pagy(Category.all.order(created_at: :desc))
   end
 
   # GET /categories/1 or /categories/1.json

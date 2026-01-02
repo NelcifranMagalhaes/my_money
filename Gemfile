@@ -43,6 +43,9 @@ gem "dartsass-rails"
 
 gem "chartkick"
 
+# https://github.com/activerecord-hackery/ransack
+gem "ransack"
+
 # https://github.com/ddnexus/pagy
 gem "pagy", "~> 43.2"
 

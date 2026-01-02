@@ -3,7 +3,9 @@ class MoneyInsController < ApplicationController
 
   # GET /money_ins or /money_ins.json
   def index
-    @pagy, @money_ins = pagy(MoneyIn.all)
+    @q = MoneyIn.includes(:category).ransack(params[:q])
+    @pagy, @money_ins = pagy(@q.result.order(created_at: :desc))
+    @categories = Category.all
   end
 
   # GET /money_ins/1 or /money_ins/1.json
