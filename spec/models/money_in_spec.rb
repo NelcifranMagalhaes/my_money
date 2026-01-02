@@ -23,4 +23,11 @@ RSpec.describe MoneyIn, type: :model do
       expect(subject).to_not be_valid
     end
   end
+
+  describe 'Associations' do
+    it 'belongs to a category' do
+      assoc = MoneyIn.reflect_on_association(:category)
+      expect(assoc.macro).to eq :belongs_to
+    end
+  end
 end
