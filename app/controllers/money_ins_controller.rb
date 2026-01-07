@@ -27,8 +27,8 @@ class MoneyInsController < ApplicationController
 
     respond_to do |format|
       if @money_in.save
-        format.html { redirect_to @money_in, notice: "Money in was successfully created." }
-        format.json { render :show, status: :created, location: @money_in }
+        format.html { redirect_to money_ins_path, notice: "Receita criada com sucesso.", status: :see_other }
+        format.json { render :index, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @money_in.errors, status: :unprocessable_entity }
@@ -40,8 +40,8 @@ class MoneyInsController < ApplicationController
   def update
     respond_to do |format|
       if @money_in.update(money_in_params)
-        format.html { redirect_to @money_in, notice: "Money in was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @money_in }
+        format.html { redirect_to money_ins_path, notice: "Receita atualizada com sucesso.", status: :see_other }
+        format.json { render :index, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @money_in.errors, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class MoneyInsController < ApplicationController
     @money_in.destroy!
 
     respond_to do |format|
-      format.html { redirect_to money_ins_path, notice: "Money in was successfully destroyed.", status: :see_other }
+      format.html { redirect_to money_ins_path, notice: "Receita excluída com sucesso.", status: :see_other }
       format.json { head :no_content }
     end
   end

@@ -27,7 +27,7 @@ class MoneyOutsController < ApplicationController
 
     respond_to do |format|
       if @money_out.save
-        format.html { redirect_to @money_out, notice: "Money out was successfully created." }
+        format.html { redirect_to money_outs_path, notice: "Despesa criada com sucesso." }
         format.json { render :show, status: :created, location: @money_out }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class MoneyOutsController < ApplicationController
   def update
     respond_to do |format|
       if @money_out.update(money_out_params)
-        format.html { redirect_to @money_out, notice: "Money out was successfully updated.", status: :see_other }
+        format.html { redirect_to money_outs_path, notice: "Despesa atualizada com sucesso.", status: :see_other }
         format.json { render :show, status: :ok, location: @money_out }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class MoneyOutsController < ApplicationController
     @money_out.destroy!
 
     respond_to do |format|
-      format.html { redirect_to money_outs_path, notice: "Money out was successfully destroyed.", status: :see_other }
+      format.html { redirect_to money_outs_path, notice: "Despesa excluída com sucesso.", status: :see_other }
       format.json { head :no_content }
     end
   end
