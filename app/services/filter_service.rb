@@ -43,4 +43,13 @@ class FilterService
   def how_many_money_have
     money_in_in_current_month - money_out_in_current_month
   end
+
+  def percentage_money_out_by_category
+    total_money_out = money_out_in_current_month.to_f
+    return {} if total_money_out.zero?
+
+    money_out_by_category.transform_values do |amount|
+      ((amount / total_money_out) * 100).round(2)
+    end
+  end
 end
