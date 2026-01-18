@@ -42,6 +42,9 @@
     <%= f.submit "Buscar", class: "btn btn-primary mt-2" %>
   <% end %>
 </div>
+<div class="d-flex justify-content-end mb-3">
+  <span class="badge text-bg-info fs-5 fw-semibold"><%= number_to_currency(@total_amount) %></span>
+</div>
 
 <div id="money_outs">
   <table class="table table-striped table-hover">
