@@ -3,9 +3,17 @@ class MoneyOutsController < ApplicationController
 
   # GET /money_outs or /money_outs.json
   def index
-    @q = MoneyOut.includes(:category).ransack(params[:q])
+    month_start = Date.today.beginning_of_month
+    month_end = Date.today.end_of_month
+
+    search_params = params[:q].presence || {}
+    search_params[:money_date_gteq] ||= month_start
+    search_params[:money_date_lteq] ||= month_end
+
+    @q = MoneyOut.includes(:category).ransack(search_params)
     @pagy, @money_outs = pagy(@q.result.order(created_at: :desc))
     @categories = Category.all
+    @total_amount = @q.result.sum(:amount)
   end
 
   # GET /money_outs/1 or /money_outs/1.json
