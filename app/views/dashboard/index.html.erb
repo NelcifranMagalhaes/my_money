@@ -84,6 +84,17 @@
     <div class="row row-cols-1 row-cols-md-1 g-4">
       <div class="col">
         <div class="card mb-3">
+          <div class="card-header">Porcentagem por Categoria</div>
+            <%= bar_chart @percentage_money_out_by_category, suffix: "%" %>
+        </div>
+    </div>
+  </div>
+  
+
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+      <div class="col">
+        <div class="card mb-3">
           <div class="card-header">Top 5 Despesas do Mês</div>
             <table class="table">
               <thead>
