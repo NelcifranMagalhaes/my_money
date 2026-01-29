@@ -35,10 +35,16 @@
   </div>
 
   <div class="mb-3">
-    <%= form.submit "Criar Despesa", class: "btn btn-primary" %>
+    <%= form.label :recurrency, class: "form-label", for: "moneyOutRecurrency" %>
+    <%= form.check_box :recurrency, class: "form-check-input", id: "moneyOutRecurrency" %>
+  </div>
+
+  <div class="mb-3 invisible" id="recurrencyQuantityContainer">
+    <%= form.label :recurrency_quantity, class: "form-label", for: "moneyOutRecurrencyQuantity" %>
+    <%= form.number_field :recurrency_quantity, class: "form-control", id: "moneyOutRecurrencyQuantity", min: 0, placeholder: "quantidade de recorrências" %>
   </div>
 
   <div class="mb-3">
-    <%= link_to "Voltar", money_outs_path, class: "btn btn-secondary" %>
+    <%= form.submit "Enviar", class: "btn btn-success" %>
   </div>
 <% end %>

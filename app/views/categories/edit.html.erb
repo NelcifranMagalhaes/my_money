@@ -1,12 +1,14 @@
 <% content_for :title, "Editing category" %>
 
-<h1>Editing category</h1>
+<h1>Editando Categoria</h1>
 
 <%= render "form", category: @category %>
 
 <br>
 
-<div>
-  <%= link_to "Show this category", @category %> |
-  <%= link_to "Back to categories", categories_path %>
+
+<div class="d-grid gap-3 d-md-block d-md-flex mt-4">
+  <%= link_to "Mostrar esta categoria", @category, class: "btn btn-primary" %>
+  <%= link_to "Voltar para categorias", categories_path, class: "btn btn-secondary" %>
+  <%= button_to "Excluir esta Categoria", @category, method: :delete, class: "btn btn-danger" %>
 </div>

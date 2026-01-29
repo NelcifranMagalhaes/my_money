@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_30_232210) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_26_143833) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -39,6 +39,9 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_30_232210) do
     t.string "description"
     t.string "label"
     t.date "money_date"
+    t.integer "original_money_out_id"
+    t.boolean "recurrency", default: false
+    t.integer "recurrency_quantity", default: 0
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_money_outs_on_category_id"
   end

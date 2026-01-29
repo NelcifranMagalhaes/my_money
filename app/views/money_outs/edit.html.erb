@@ -1,12 +1,13 @@
 <% content_for :title, "Editing money out" %>
 
-<h1>Editing money out</h1>
+<h1>Editando Despesas</h1>
 
 <%= render "form", money_out: @money_out %>
 
 <br>
 
-<div>
-  <%= link_to "Show this money out", @money_out %> |
-  <%= link_to "Back to money outs", money_outs_path %>
+<div class="d-grid gap-3 d-md-block d-md-flex mt-4">
+  <%= link_to "Mostrar esta despesa", @money_out, class: "btn btn-primary" %>
+  <%= link_to "Voltar para despesas", money_outs_path, class: "btn btn-secondary" %>
+  <%= button_to "Excluir esta Despesa", @money_out, method: :delete, class: "btn btn-danger" %>
 </div>

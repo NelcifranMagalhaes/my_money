@@ -35,6 +35,7 @@ class MoneyOutsController < ApplicationController
 
     respond_to do |format|
       if @money_out.save
+        RecurrencyCreateService.new(@money_out).perform
         format.html { redirect_to money_outs_path, notice: "Despesa criada com sucesso." }
         format.json { render :show, status: :created, location: @money_out }
       else
@@ -48,6 +49,7 @@ class MoneyOutsController < ApplicationController
   def update
     respond_to do |format|
       if @money_out.update(money_out_params)
+        RecurrencyUpdateService.new(@money_out).perform
         format.html { redirect_to money_outs_path, notice: "Despesa atualizada com sucesso.", status: :see_other }
         format.json { render :show, status: :ok, location: @money_out }
       else
@@ -60,6 +62,7 @@ class MoneyOutsController < ApplicationController
   # DELETE /money_outs/1 or /money_outs/1.json
   def destroy
     @money_out.destroy!
+    RecurrencyDeleteService.new(@money_out).perform
 
     respond_to do |format|
       format.html { redirect_to money_outs_path, notice: "Despesa excluída com sucesso.", status: :see_other }
@@ -75,6 +78,6 @@ class MoneyOutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def money_out_params
-      params.expect(money_out: [ :label, :description, :amount, :money_date, :category_id ])
+      params.expect(money_out: [ :label, :description, :amount, :money_date, :category_id, :recurrency, :recurrency_quantity ])
     end
 end

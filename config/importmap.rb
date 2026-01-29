@@ -9,3 +9,4 @@ pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.8/dist/esm/inde
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin_all_from "app/javascript/money_out", under: "money_out"

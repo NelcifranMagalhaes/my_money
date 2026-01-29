@@ -3,4 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
 import "chartkick"
+import "money_out/main"
 import "Chart.bundle";
