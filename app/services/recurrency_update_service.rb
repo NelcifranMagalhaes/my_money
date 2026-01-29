@@ -4,7 +4,7 @@ class RecurrencyUpdateService
   end
 
   def perform
-    return unless @money_out.recurrency.present? && @money_out.recurrency > 1
+    return unless @money_out.recurrency.present? && @money_out.recurrency_quantity > 1
 
     RecurrencyDeleteService.new(@money_out).perform
 

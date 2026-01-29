@@ -4,7 +4,7 @@ class RecurrencyCreateService
   end
 
   def perform
-    return unless @money_out.recurrency.present? && @money_out.recurrency > 1
+    return unless @money_out.recurrency.present? && @money_out.recurrency_quantity > 1
 
     (@money_out.recurrency_quantity - 1).times do |i|
       new_money_out = @money_out.dup
