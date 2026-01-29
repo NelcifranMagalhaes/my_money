@@ -40,6 +40,8 @@ pt-BR:
         category_id: "Categoria"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+        recurrency: "Recorrência"
+        recurrency_quantity: "Quantidade de Recorrências"
 
     errors:
       messages:
