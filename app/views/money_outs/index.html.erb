@@ -55,6 +55,7 @@
         <th>Valor</th>
         <th>Data</th>
         <th>Categoria</th>
+        <th>Recorrente?</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -67,6 +68,9 @@
           <td><%= number_to_currency(money_out.amount) %></td>
           <td><%= money_out.money_date.strftime("%d/%m/%Y") %></td>
           <td><%= money_out.category.name if money_out.category %></td>
+          <td>
+            <%= recurrency_badge(money_out) %>
+          </td>
           <td>
             <%= link_to "Editar", edit_money_out_path(money_out), class: "btn btn-warning" %>
             <%= link_to "Excluir", money_out, data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" }, class: "btn btn-danger" %>

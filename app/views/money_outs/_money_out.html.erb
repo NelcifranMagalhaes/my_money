@@ -12,6 +12,25 @@
   <div class="card-body">
     <p class="card-text"><b>Valor:</b> R$<%= money_out.amount %></p>
   </div>
+  <div class="card-body">
+    <p class="card-text"><b>Recorrente?:</b> <b><%= recurrency_badge(money_out) %></b></p>
+  </div>
+  <% if money_out.recurrency_quantity > 0 %>
+    <div class="card-body">
+      <p class="card-text"><b>Quantidade de Parcelas?:</b> <b><%= money_out.recurrency_quantity %></b></p>
+    </div>
+  <% end %>
+
+  <% if money_out.original_money_out.present? %>
+    <div class="card-body">
+      <p class="card-text"><b>Compra Original:</b>
+        <%= link_to(money_out.original_money_out, class: "btn btn-warning") do %>
+          <%= money_out.original_money_out.label if money_out.original_money_out %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+
   <div class="card-footer text-body-secondary">
     <b><%= money_out.money_date.strftime("%d/%m/%Y") %></b>
   </div>

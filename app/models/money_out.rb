@@ -1,5 +1,6 @@
 class MoneyOut < ApplicationRecord
   belongs_to :category
+  belongs_to :original_money_out, class_name: "MoneyOut", optional: true
   validates :label, presence: true
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :money_date, presence: true
