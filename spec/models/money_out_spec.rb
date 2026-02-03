@@ -22,6 +22,11 @@ RSpec.describe MoneyOut, type: :model do
       subject.money_date = nil
       expect(subject).to_not be_valid
     end
+
+    it 'is not valid with a negative amount' do
+      subject.amount = -50.0
+      expect(subject).to_not be_valid
+    end
   end
   describe 'Associations' do
     it 'belongs to a category' do
