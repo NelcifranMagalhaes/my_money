@@ -31,7 +31,7 @@
 
   <div class="mb-3">
     <%= form.label :category_id, class: "form-label", for: "moneyInCategoryId" %>
-    <%= form.select :category_id, Category.all.collect { |c| [c.name, c.id] }, { include_blank: "Selecione uma categoria" }, class: "form-control", id: "moneyInCategoryId" %>
+    <%= form.select :category_id, Category.where(user: Current.user).collect { |c| [c.name, c.id] }, { include_blank: "Selecione uma categoria" }, class: "form-control", id: "moneyInCategoryId" %>
   </div>
 
   <div class="mb-3">

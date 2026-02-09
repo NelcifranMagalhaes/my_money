@@ -10,9 +10,9 @@ class MoneyOutsController < ApplicationController
     search_params[:money_date_gteq] ||= month_start
     search_params[:money_date_lteq] ||= month_end
 
-    @q = MoneyOut.includes(:category).ransack(search_params)
+    @q = MoneyOut.includes(:category).where(user: Current.user).ransack(search_params)
     @pagy, @money_outs = pagy(@q.result.order(created_at: :desc))
-    @categories = Category.all
+    @categories = Category.where(user: Current.user).order(:name)
     @total_amount = @q.result.sum(:amount)
   end
 
@@ -31,7 +31,7 @@ class MoneyOutsController < ApplicationController
 
   # POST /money_outs or /money_outs.json
   def create
-    @money_out = MoneyOut.new(money_out_params)
+    @money_out = MoneyOut.new(money_out_params.merge(user: Current.user))
 
     respond_to do |format|
       if @money_out.save

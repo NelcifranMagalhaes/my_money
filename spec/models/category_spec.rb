@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  subject { Category.new(name: "Utilities", description: "Monthly utility bills") }
+  let(:user) do
+    User.create!(email_address: "midoria+#{SecureRandom.hex(4)}@example.com", password: "password")
+  end
+
+  subject { Category.new(name: "Utilities", description: "Monthly utility bills", user: user) }
 
   describe 'Validations' do
     it 'is valid with valid attributes' do
