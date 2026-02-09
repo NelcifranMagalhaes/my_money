@@ -19,11 +19,13 @@
           <td><%= category.name %></td>
           <td><%= category.description %></td>
           <td>
-            <%= link_to "Editar", edit_category_path(category), class: "btn btn-warning" %>
-            <%= link_to "Excluir", category, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger" %>
-            <%= link_to(category , class: "btn btn-default") do %>
-              <i class="fa-solid fa-eye"></i> Ver
-            <% end %>
+            <div class="d-grid gap-2 d-md-flex">
+              <%= link_to "Editar", edit_category_path(category), class: "btn btn-warning" %>
+              <%= link_to "Excluir", category, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger" %>
+              <%= link_to(category , class: "btn btn-default") do %>
+                <i class="fa-solid fa-eye"></i> Ver
+              <% end %>
+            </div>
           </td>
         </tr>
       <% end %>
