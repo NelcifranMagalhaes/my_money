@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @pagy, @categories = pagy(Category.all.order(created_at: :desc))
+    @pagy, @categories = pagy(Category.where(user: Current.user).order(created_at: :desc))
   end
 
   # GET /categories/1 or /categories/1.json
@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
 
   # POST /categories or /categories.json
   def create
-    @category = Category.new(category_params)
+    @category = Category.new(category_params.merge(user: Current.user))
 
     respond_to do |format|
       if @category.save

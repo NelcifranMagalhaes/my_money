@@ -3,9 +3,9 @@ class MoneyInsController < ApplicationController
 
   # GET /money_ins or /money_ins.json
   def index
-    @q = MoneyIn.includes(:category).ransack(params[:q])
+    @q = MoneyIn.includes(:category).where(user: Current.user).ransack(params[:q])
     @pagy, @money_ins = pagy(@q.result.order(created_at: :desc))
-    @categories = Category.all
+    @categories = Category.where(user: Current.user).order(:name)
   end
 
   # GET /money_ins/1 or /money_ins/1.json
@@ -23,7 +23,7 @@ class MoneyInsController < ApplicationController
 
   # POST /money_ins or /money_ins.json
   def create
-    @money_in = MoneyIn.new(money_in_params)
+    @money_in = MoneyIn.new(money_in_params.merge(user: Current.user))
 
     respond_to do |format|
       if @money_in.save

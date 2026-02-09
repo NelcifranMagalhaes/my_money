@@ -1,17 +1,20 @@
 class FilterService
-  def initialize(month_start:, month_end:)
+  def initialize(month_start:, month_end:, current_user:)
     @month_start = month_start
     @month_end = month_end
+    @current_user = current_user
   end
 
   def money_out_in_current_month
     MoneyOut
+      .where(user: @current_user)
       .where(money_date: @month_start..@month_end)
       .sum(:amount)
   end
 
   def money_in_in_current_month
     MoneyIn
+      .where(user: @current_user)
       .where(money_date: @month_start..@month_end)
       .sum(:amount)
   end
@@ -19,6 +22,7 @@ class FilterService
   def money_out_by_category
     MoneyOut
       .joins(:category)
+      .where(user: @current_user)
       .where(money_date: @month_start..@month_end)
       .group("categories.name")
       .sum(:amount)
@@ -27,6 +31,7 @@ class FilterService
   def money_out_by_month
     start_month = @month_start - 5.months
     MoneyOut
+      .where(user: @current_user)
       .where(money_date: start_month..@month_end)
       .group(Arel.sql("DATE_TRUNC('month', money_date)::date"))
       .order(Arel.sql("DATE_TRUNC('month', money_date)::date"))
@@ -35,6 +40,7 @@ class FilterService
 
   def most_expensive_money_outs
     MoneyOut
+      .where(user: @current_user)
       .where(money_date: @month_start..@month_end)
       .order(amount: :desc)
       .limit(5)

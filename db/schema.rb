@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_26_143833) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_09_140433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_26_143833) do
     t.string "description"
     t.string "name"
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "money_ins", force: :cascade do |t|
@@ -29,7 +31,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_26_143833) do
     t.string "label"
     t.date "money_date"
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_money_ins_on_category_id"
+    t.index ["user_id"], name: "index_money_ins_on_user_id"
   end
 
   create_table "money_outs", force: :cascade do |t|
@@ -43,7 +47,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_26_143833) do
     t.boolean "recurrency", default: false
     t.integer "recurrency_quantity", default: 0
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_money_outs_on_category_id"
+    t.index ["user_id"], name: "index_money_outs_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -63,7 +69,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_26_143833) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "categories", "users"
   add_foreign_key "money_ins", "categories"
+  add_foreign_key "money_ins", "users"
   add_foreign_key "money_outs", "categories"
+  add_foreign_key "money_outs", "users"
   add_foreign_key "sessions", "users"
 end

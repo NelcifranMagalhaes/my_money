@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe MoneyIn, type: :model do
+  let(:user) do
+    User.create!(email_address: "midoria+#{SecureRandom.hex(4)}@example.com", password: "password")
+  end
   subject { MoneyIn.new(amount: 150.0, description: "Freelance project payment",
-   label: "Freelance", money_date: Date.today, category: Category.new(name: "Salary")) }
+   label: "Freelance", money_date: Date.today, user: user, category: Category.new(name: "Salary", user: user)) }
   describe 'Validations' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

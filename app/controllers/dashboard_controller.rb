@@ -23,7 +23,7 @@ class DashboardController < ApplicationController
   private
 
   def filters(month_start, month_end)
-    service = FilterService.new(month_start: month_start, month_end: month_end)
+    service = FilterService.new(month_start: month_start, month_end: month_end, current_user: Current.user)
 
     @money_out_in_current_month = service.money_out_in_current_month
     @money_in_in_current_month = service.money_in_in_current_month
