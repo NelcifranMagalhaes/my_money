@@ -1,4 +1,7 @@
 pt-BR:
+  category_saved: "Categoria salva com sucesso."
+  category_updated: "Categoria atualizada com sucesso."
+  category_deleted: "Categoria excluída com sucesso."
   number:
     currency:
       format:
