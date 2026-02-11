@@ -3,7 +3,13 @@ class MoneyInsController < ApplicationController
 
   # GET /money_ins or /money_ins.json
   def index
-    @q = MoneyIn.includes(:category).where(user: Current.user).ransack(params[:q])
+    month_start = Date.today.beginning_of_month
+    month_end = Date.today.end_of_month
+
+    search_params = params[:q].presence || {}
+    search_params[:money_date_gteq] ||= month_start
+    search_params[:money_date_lteq] ||= month_end
+    @q = MoneyIn.includes(:category).where(user: Current.user).ransack(search_params)
     @pagy, @money_ins = pagy(@q.result.order(created_at: :desc))
     @categories = Category.where(user: Current.user).order(:name)
   end
