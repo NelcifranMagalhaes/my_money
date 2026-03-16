@@ -60,7 +60,7 @@
       <% @money_ins.each do |money_in| %>
         <tr>
           <td><%= money_in.label %></td>
-          <td><%= money_in.description %></td>
+          <td><%= money_in.description.truncate(50) %></td>
           <td><%= number_to_currency(money_in.amount) %></td>
           <td><%= money_in.money_date.strftime("%d/%m/%Y") %></td>
           <td><%= money_in.category.name if money_in.category %></td>
