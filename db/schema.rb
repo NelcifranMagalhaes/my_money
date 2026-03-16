@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_09_140433) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_16_170846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -41,6 +41,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_09_140433) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.string "description"
+    t.integer "installment", default: 0
     t.string "label"
     t.date "money_date"
     t.integer "original_money_out_id"

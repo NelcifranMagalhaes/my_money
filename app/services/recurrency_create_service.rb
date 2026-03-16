@@ -12,7 +12,9 @@ class RecurrencyCreateService
       new_money_out.recurrency = false
       new_money_out.recurrency_quantity = 0
       new_money_out.original_money_out_id = @money_out.id
+      new_money_out.installment = i + 2
       new_money_out.save!
     end
+    @money_out.update!(installment: 1)
   end
 end
