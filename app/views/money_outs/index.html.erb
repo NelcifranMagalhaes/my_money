@@ -55,7 +55,6 @@
         <th>Valor</th>
         <th>Data</th>
         <th>Categoria</th>
-        <th>Recorrente?</th>
         <th>Parcela</th>
         <th>Ações</th>
       </tr>
@@ -69,9 +68,6 @@
           <td><%= number_to_currency(money_out.amount) %></td>
           <td><%= money_out.money_date.strftime("%d/%m/%Y") %></td>
           <td><%= money_out.category.name if money_out.category %></td>
-          <td>
-            <%= recurrency_badge(money_out) %>
-          </td>
           <td>
             <%= installment_badge(money_out) %>
           </td>
