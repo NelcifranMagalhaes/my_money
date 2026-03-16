@@ -56,6 +56,7 @@
         <th>Data</th>
         <th>Categoria</th>
         <th>Recorrente?</th>
+        <th>Parcela</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -70,6 +71,9 @@
           <td><%= money_out.category.name if money_out.category %></td>
           <td>
             <%= recurrency_badge(money_out) %>
+          </td>
+          <td>
+            <%= installment_badge(money_out) %>
           </td>
           <td>
             <div class="d-grid gap-2 d-md-flex">

@@ -20,6 +20,9 @@
       <p class="card-text"><b>Quantidade de Parcelas?:</b> <b><%= money_out.recurrency_quantity %></b></p>
     </div>
   <% end %>
+  <div class="card-body">
+    <p class="card-text"><b>Parcela:</b> <b><%= installment_badge(money_out) %></b></p>
+  </div>
 
   <% if money_out.original_money_out.present? %>
     <div class="card-body">
