@@ -23,3 +23,19 @@
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+
+      .main-content-with-navbar {
+        padding-top: 5rem;
+        padding-bottom: 1rem;
+      }
+
+      @media (min-width: 992px) {
+        .main-content-with-navbar {
+          padding-top: 6rem;
+        }
+      }
+
+      .main-content-no-navbar {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
