@@ -79,6 +79,12 @@
   </table>
 </div>
 <%== @pagy.series_nav(:bootstrap) %>
-<%= link_to "Nova receita", new_money_in_path, class: "btn btn-primary" %>
+<div class="pb-5 mb-3 d-md-none"></div>
+
+<div class="position-fixed bottom-0 start-50 translate-middle-x p-3 d-md-none" style="z-index: 1030;">
+  <%= link_to "Nova receita", new_money_in_path, class: "btn btn-primary btn-sm px-4 rounded-pill shadow" %>
+</div>
+
+<%= link_to "Nova receita", new_money_in_path, class: "btn btn-primary position-fixed bottom-0 end-0 m-4 d-none d-md-inline-flex shadow", style: "z-index: 1030;" %>
 
 
