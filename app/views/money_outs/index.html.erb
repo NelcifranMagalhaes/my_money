@@ -41,6 +41,13 @@
 
     <%= f.submit "Buscar", class: "btn btn-primary mt-2" %>
   <% end %>
+  <% selected_base_date = (@q.money_date_gteq.presence || @q.money_date_lteq.presence || Date.current).to_date %>
+  <% next_month_start = selected_base_date.next_month.beginning_of_month %>
+  <% next_month_end = selected_base_date.next_month.end_of_month %>
+  <div class="d-flex justify-content-center">
+    <%= link_to "Próximo Mês", money_outs_path(q: { money_date_gteq: next_month_start, money_date_lteq: next_month_end }), class: "btn btn-secondary mt-2" %>
+  </div>
+
 </div>
 <div class="d-flex justify-content-end mb-3">
   <span class="badge text-bg-info fs-5 fw-semibold"><%= number_to_currency(@total_amount) %></span>
