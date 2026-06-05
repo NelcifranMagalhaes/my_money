@@ -41,11 +41,24 @@
 
     <%= f.submit "Buscar", class: "btn btn-primary mt-2" %>
   <% end %>
-  <% selected_base_date = (@q.money_date_gteq.presence || @q.money_date_lteq.presence || Date.current).to_date %>
-  <% next_month_start = selected_base_date.next_month.beginning_of_month %>
-  <% next_month_end = selected_base_date.next_month.end_of_month %>
-  <div class="d-flex justify-content-center">
-    <%= link_to "Próximo Mês", money_outs_path(q: { money_date_gteq: next_month_start, money_date_lteq: next_month_end }), class: "btn btn-secondary mt-2" %>
+  
+  <div class="row mt-2">
+    <div class="col-md-6">
+      <% selected_base_date = (@q.money_date_gteq.presence || @q.money_date_lteq.presence || Date.current).to_date %>
+      <% prev_month_start = selected_base_date.prev_month.beginning_of_month %>
+      <% prev_month_end = selected_base_date.prev_month.end_of_month %>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Mês Anterior", money_outs_path(q: { money_date_gteq: prev_month_start, money_date_lteq: prev_month_end }), class: "btn btn-secondary mt-2" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <% selected_base_date = (@q.money_date_gteq.presence || @q.money_date_lteq.presence || Date.current).to_date %>
+      <% next_month_start = selected_base_date.next_month.beginning_of_month %>
+      <% next_month_end = selected_base_date.next_month.end_of_month %>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Próximo Mês", money_outs_path(q: { money_date_gteq: next_month_start, money_date_lteq: next_month_end }), class: "btn btn-secondary mt-2" %>
+      </div>
+    </div>
   </div>
 
 </div>
