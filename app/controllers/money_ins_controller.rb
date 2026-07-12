@@ -9,9 +9,11 @@ class MoneyInsController < ApplicationController
     search_params = params[:q].presence || {}
     search_params[:money_date_gteq] ||= month_start
     search_params[:money_date_lteq] ||= month_end
+
     @q = MoneyIn.includes(:category).where(user: Current.user).ransack(search_params)
     @pagy, @money_ins = pagy(@q.result.order(created_at: :desc))
     @categories = Category.where(user: Current.user).order(:name)
+    @total_amount = @q.result.sum(:amount)
   end
 
   # GET /money_ins/1 or /money_ins/1.json
