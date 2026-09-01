@@ -9,6 +9,11 @@
   <div class="card-body">
     <p class="card-text"><b>Categoria:</b> <%= money_out.category.name %></p>
   </div>
+  <% if money_out.debtor.present? %>
+    <div class="card-body">
+      <p class="card-text"><b>Devedor:</b> <%= money_out.debtor.name %></p>
+    </div>
+  <% end %>
   <div class="card-body">
     <p class="card-text"><b>Valor:</b> R$<%= money_out.amount %></p>
   </div>

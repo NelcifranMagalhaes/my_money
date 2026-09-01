@@ -1,0 +1,10 @@
+
+<p style="color: green"><%= notice %></p>
+
+<%= render @debtor %>
+
+<div class="d-grid gap-3 d-md-block d-md-flex mt-4">
+  <%= link_to "Editar este devedor", edit_debtor_path(@debtor), class: "btn btn-primary" %>
+  <%= link_to "Voltar para devedores", debtors_path, class: "btn btn-secondary" %>
+  <%= button_to "Excluir este devedor", @debtor, method: :delete, class: "btn btn-danger" %>
+</div>

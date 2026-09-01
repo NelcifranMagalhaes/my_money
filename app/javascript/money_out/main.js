@@ -1,21 +1,35 @@
 
-document.addEventListener("turbo:load", () => {
+const initializeMoneyOutForm = () => {
   const recurrencyCheckbox = document.getElementById("moneyOutRecurrency");
   const recurrencyQuantityContainer = document.getElementById("recurrencyQuantityContainer");
+  const categorySelect = document.getElementById("moneyOutCategoryId");
+  const debtorSelectContainer = document.getElementById("debtorSelectContainer");
 
-  if (recurrencyCheckbox) {
+  if (recurrencyCheckbox && recurrencyQuantityContainer) {
     const toggleRecurrencyQuantity = () => {
-      if (recurrencyCheckbox.checked) {
-        recurrencyQuantityContainer.classList.remove("invisible");
+      recurrencyQuantityContainer.classList.toggle("invisible", !recurrencyCheckbox.checked);
+    };
+
+    toggleRecurrencyQuantity();
+    recurrencyCheckbox.addEventListener("change", toggleRecurrencyQuantity);
+  }
+
+  if (categorySelect) {
+    console.log("Category select found:", categorySelect);
+    const toggleDebtorSelect = () => {
+      const selectedCategoryText = categorySelect.options[categorySelect.selectedIndex]?.text || "";
+      const normalizedText = selectedCategoryText.trim().toLowerCase();
+
+      if (normalizedText === "devedores") {
+        debtorSelectContainer.classList.remove("invisible");
       } else {
-        recurrencyQuantityContainer.classList.add("invisible");
+        debtorSelectContainer.classList.add("invisible");
       }
     };
 
-    // Initial toggle based on the current state
-    toggleRecurrencyQuantity();
-
-    // Add event listener for changes
-    recurrencyCheckbox.addEventListener("change", toggleRecurrencyQuantity);
+    toggleDebtorSelect();
+    categorySelect.addEventListener("change", toggleDebtorSelect);
   }
-});
+};
+
+document.addEventListener("turbo:load", initializeMoneyOutForm);

@@ -1,0 +1,8 @@
+<div class="card text-center" id="<%= dom_id debtor %>">
+  <div class="card-header">
+    <%= debtor.name %>
+  </div>
+   <div class="card-body">
+    <p class="card-text"><b>Quanto deve:</b> R$<%= debtor.money_outs.sum(:amount) %></p>
+  </div>
+</div>

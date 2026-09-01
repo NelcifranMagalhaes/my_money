@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Devedores" %>
+
+<h1>Devedores</h1>
+
+<div id="debtors">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @debtors.each do |debtor| %>
+        <tr>
+          <td><%= debtor.name %></td>
+          <td>
+            <div class="d-grid gap-2 d-md-flex">
+              <%= link_to "Editar", edit_debtor_path(debtor), class: "btn btn-warning" %>
+              <%= link_to "Excluir", debtor, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger" %>
+              <%= link_to(debtor , class: "btn btn-default") do %>
+                <i class="fa-solid fa-eye"></i> Ver
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%== @pagy.series_nav(:bootstrap) %>
+<%= link_to "Novo Devedor", new_debtor_path, class: "btn btn-primary" %>
