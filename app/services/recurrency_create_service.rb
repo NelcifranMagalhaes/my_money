@@ -5,8 +5,8 @@ class RecurrencyCreateService
 
   def perform
     return unless @money_out.recurrency.present? && @money_out.recurrency_quantity > 1
-
-    (@money_out.recurrency_quantity).times do |i|
+    @money_out.update!(installment: 1, money_date: @money_out.money_date + 1.month)
+    (@money_out.recurrency_quantity-1).times do |i|
       new_money_out = @money_out.dup
       new_money_out.money_date = @money_out.money_date + (i + 1).months
       new_money_out.recurrency = false
@@ -15,6 +15,5 @@ class RecurrencyCreateService
       new_money_out.installment = i + 2
       new_money_out.save!
     end
-    @money_out.update!(installment: 1)
   end
 end
