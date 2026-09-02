@@ -2,6 +2,9 @@ pt-BR:
   category_saved: "Categoria salva com sucesso."
   category_updated: "Categoria atualizada com sucesso."
   category_deleted: "Categoria excluída com sucesso."
+  debtor_saved: "Devedor salvo com sucesso."
+  debtor_updated: "Devedor atualizado com sucesso."
+  debtor_deleted: "Devedor excluído com sucesso."
   number:
     currency:
       format:
@@ -16,6 +19,7 @@ pt-BR:
       category: "Categoria"
       money_in: "Receita"
       money_out: "Despesa"
+      debtor: "Devedor"
 
     attributes:
       category:
@@ -33,6 +37,7 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Atualizado em"
         category: "Categoria"
+        debtor_id: "Devedor"
 
       money_out:
         label: "Nome da Despesa"
@@ -45,6 +50,12 @@ pt-BR:
         updated_at: "Atualizado em"
         recurrency: "Recorrência"
         recurrency_quantity: "Quantidade de Recorrências"
+        debtor_id: "Devedor"
+      
+      debtor:
+        name: "Nome"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
 
     errors:
       messages:

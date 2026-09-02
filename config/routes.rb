@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :debtors
   resource :session
   resources :passwords, param: :token
   resources :money_ins

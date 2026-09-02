@@ -31,7 +31,16 @@
 
   <div class="mb-3">
     <%= form.label :category_id, class: "form-label", for: "moneyOutCategoryId" %>
-    <%= form.select :category_id, Category.where(user: Current.user).collect { |c| [c.name, c.id] }, { include_blank: "Selecione uma categoria" }, class: "form-control", id: "moneyOutCategoryId" %>
+    <%= form.select :category_id,
+        Category.where(user: Current.user).collect { |c| [c.name, c.id] },
+        { include_blank: "Selecione uma categoria" },
+        class: "form-control",
+        id: "moneyOutCategoryId" %>
+  </div>
+
+  <div class="mb-3 invisible" id="debtorSelectContainer" >
+    <%= form.label :debtor_id, class: "form-label", for: "moneyOutDebtorId" %>
+    <%= form.select :debtor_id, Debtor.where(user: Current.user).collect { |d| [d.name, d.id] }, { include_blank: "Selecione um devedor" }, class: "form-control", id: "moneyOutDebtorId" %>
   </div>
 
   <div class="mb-3">

@@ -1,0 +1,11 @@
+<% content_for :title, "Novo Devedor" %>
+
+<h1>Novo Devedor</h1>
+
+<%= render "form", debtor: @debtor %>
+
+<br>
+
+<div>
+  <%= link_to "Voltar para devedores", debtors_path %>
+</div>

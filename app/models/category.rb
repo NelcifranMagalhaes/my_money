@@ -5,4 +5,8 @@ class Category < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     [ "name" ]
   end
+
+  def debtor?
+    name.downcase == "devedores"
+  end
 end

@@ -1,0 +1,23 @@
+<div class="card text-center" id="<%= dom_id debtor %>">
+  <div class="card-header">
+    <%= debtor.name %>
+  </div>
+   <div class="card-body">
+    <p class="card-text"><b>Quanto deve:</b> R$<%= debtor.money_outs.sum(:amount) - debtor.money_ins.sum(:amount) %></p>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><b>Histórico de transações:</b></p>
+    <ul class="list-group">
+      <% debtor.money_outs.each do |money_out| %>
+        <li class="list-group-item"><%= link_to(money_out, class: "btn btn-warning") do %>
+          <%= money_out.label %> - R$<%= money_out.amount %> - <%= money_out.money_date.strftime("%d/%m/%Y") %>
+        <% end %></li>
+      <% end %>
+      <% debtor.money_ins.each do |money_in| %>
+        <li class="list-group-item"><%= link_to(money_in, class: "btn btn-success") do %>
+          <%= money_in.label %> - R$<%= money_in.amount %> - <%= money_in.money_date.strftime("%d/%m/%Y") %>
+        <% end %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

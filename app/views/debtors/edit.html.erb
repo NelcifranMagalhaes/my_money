@@ -1,0 +1,15 @@
+
+<% content_for :title, "Editando devedor" %>
+
+<h1>Editando Devedor</h1>
+
+<%= render "form", debtor: @debtor %>
+
+<br>
+
+
+<div class="d-grid gap-3 d-md-block d-md-flex mt-4">
+  <%= link_to "Mostrar este devedor", @debtor, class: "btn btn-primary" %>
+  <%= link_to "Voltar para devedores", debtors_path, class: "btn btn-secondary" %>
+  <%= button_to "Excluir este devedor", @debtor, method: :delete, class: "btn btn-danger" %>
+</div>

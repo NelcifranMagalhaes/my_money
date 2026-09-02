@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_16_170846) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_02_221431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -23,10 +23,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_16_170846) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
+  create_table "debtors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_debtors_on_user_id"
+  end
+
   create_table "money_ins", force: :cascade do |t|
     t.decimal "amount"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
+    t.integer "debtor_id"
     t.string "description"
     t.string "label"
     t.date "money_date"
@@ -40,6 +49,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_16_170846) do
     t.decimal "amount"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
+    t.integer "debtor_id"
     t.string "description"
     t.integer "installment", default: 0
     t.string "label"
@@ -71,6 +81,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_16_170846) do
   end
 
   add_foreign_key "categories", "users"
+  add_foreign_key "debtors", "users"
   add_foreign_key "money_ins", "categories"
   add_foreign_key "money_ins", "users"
   add_foreign_key "money_outs", "categories"
