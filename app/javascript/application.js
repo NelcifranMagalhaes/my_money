@@ -4,4 +4,5 @@ import "controllers"
 import "bootstrap"
 import "chartkick"
 import "money_out/main"
+import "money_in/main"
 import "Chart.bundle";

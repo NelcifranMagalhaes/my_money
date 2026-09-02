@@ -5,6 +5,7 @@ class MoneyIn < ApplicationRecord
 
   belongs_to :category
   belongs_to :user
+  belongs_to :debtor, optional: true
 
   def self.ransackable_attributes(auth_object = nil)
     [ "amount", "category_id", "description", "label", "money_date" ]

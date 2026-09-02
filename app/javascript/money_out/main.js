@@ -15,7 +15,6 @@ const initializeMoneyOutForm = () => {
   }
 
   if (categorySelect) {
-    console.log("Category select found:", categorySelect);
     const toggleDebtorSelect = () => {
       const selectedCategoryText = categorySelect.options[categorySelect.selectedIndex]?.text || "";
       const normalizedText = selectedCategoryText.trim().toLowerCase();
