@@ -32,6 +32,7 @@ class DashboardController < ApplicationController
     @most_expensive_money_outs = service.most_expensive_money_outs
     @how_many_money_have = service.how_many_money_have
     @percentage_money_out_by_category = service.percentage_money_out_by_category
+    @last_money_outs = service.last_money_outs
   end
 
   def check_invalid_month(month)

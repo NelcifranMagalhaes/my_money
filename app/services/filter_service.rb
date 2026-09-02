@@ -50,6 +50,14 @@ class FilterService
     money_in_in_current_month - money_out_in_current_month
   end
 
+  def last_money_outs
+    MoneyOut
+      .where(user: @current_user)
+      .where(money_date: @month_start..@month_end)
+      .order(money_date: :asc)
+      .limit(5)
+  end
+
   def percentage_money_out_by_category
     total_money_out = money_out_in_current_month.to_f
     return {} if total_money_out.zero?
