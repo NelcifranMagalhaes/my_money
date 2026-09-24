@@ -54,7 +54,7 @@ class FilterService
     MoneyOut
       .where(user: @current_user)
       .where(money_date: @month_start..@month_end)
-      .order(money_date: :asc)
+      .order(created_at: :desc)
       .limit(5)
   end
 
